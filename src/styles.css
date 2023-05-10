@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+body{
+    background-image: url(../src/assets/noche.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+html, body{
+    height: 100%;
+   
+    
+}
+
+
+.wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    background-image: url(../src/assets/technology-g8dd7edf5f_1280.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+   
+   
+
+
+}
+
+.Logo{
+    height: 130px;
+    margin-bottom: 10px;
+    border-radius: 50px;
+
+}
+
+.body{
+    width: 100%;
+    max-width: 330px;
+    margin: auto;
+    padding: 15px;
+    text-align: center;
+}
+
+
+.form-floating{
+    text-align: start;
+}
+
+.errorLabel{
+    margin-left: 5px;
+}

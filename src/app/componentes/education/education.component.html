@@ -1,0 +1,319 @@
+<div class="px-4 py-3 mb-5 grey" id="hanging-icons">
+  <div class="pb-2 d-flex justify-content-between border-bottom">
+    <h2>Educación</h2>
+    <!-- boton añadir Educación -->
+    <button
+      type="button"
+      class="btn add mb-2"
+      data-bs-toggle="tooltip"
+      data-bs-placement="top"
+      title="Añadir Educación"
+      data-bs-toggle="modal"
+      data-bs-target="#addEducationModal"
+      (click)="onOpenModal('add')"
+
+    >
+    <i class="fas fa-plus" style="color: aliceblue;">EDUCACION</i>
+    </button>
+    <!-- Modal añadir educaión -->
+    <div
+      class="modal fade"
+      id="addEducationModal"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="addEducationModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog" role="document">
+        <div class="modal-content modal-css">
+          <div class="modal-header">
+            <h5 class="modal-title" id="addEducationModalLabel">
+              Añadir Educación
+            </h5>
+            <button
+              type="button"
+              class="btn-close green"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form #addForm="ngForm" (ngSubmit)="onAddEducation(addForm)">
+              <div class="form-group">
+                <label for="tituloEdu">Título de la carrera</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="tituloEdu"
+                  name="tituloEdu"
+                  ngModel
+                  required
+                  placeholder="Título"
+                />
+              </div>
+              <div class="form-group">
+                <label for="fechaEdu">Año de inicio</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fechaEdu"
+                  name="fechaEdu"
+                  ngModel
+                  required
+                  placeholder="Año de inicio"
+                />
+              </div>
+
+              <div class="form-group">
+                <label for="fechafinEdu">Año de finalizacion</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="fechafinEdu"
+                  name="fechafinEdu"
+                  ngModel
+                  required
+                  placeholder="Año de finalizacion"
+                />
+              </div>
+
+
+
+
+              <div class="form-group">
+                <label for="descEdu">Descripción Educación</label>
+                <input
+                  type="text"
+                  ngModel
+                  name="descEdu"
+                  class="form-control"
+                  id="descEdu"
+                  placeholder="Descripción"
+                  required
+                />
+              </div>
+
+
+              <div class="form-group">
+                <label for="imagenEdu">Imagen del centro educativo</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="imagenEdu"
+                  name="imagenEdu"
+                  ngModel
+                  required
+                  placeholder="URL imagen del centro educativo"
+                />
+              </div>
+              <div class="modal-footer mt-3">
+                <button
+                  type="button"
+                  id="add-education-form"
+                  class="btn button1"
+                  data-dismiss="modal"
+                >
+                  Cancelar
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn button2"
+                  [disabled]="addForm.invalid"
+                  data-bs-dismiss="modal"
+                >
+                  Añadir
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!-- fin modal añadir educación -->
+  </div>
+  <div class="row g-4 pt-3 row-cols-1 row-cols-lg-3 d-flex justify-content-around">
+    <div class="col d-flex align-items-start" *ngFor="let education of educations">
+      <div class="card mb-4">
+        <div class="card-body">
+          <img
+          class="card-img-top mb-2 img-edu"
+          src="{{ education.imagenEdu }}"
+          alt="Card image cap"
+        />
+          <h5 class="card-title">{{ education.tituloEdu }}</h5> <br>
+          <p class="card-text"><u>Descripción:</u> {{ education.descEdu }}</p>
+          <p class="card-text"><u>Fecha de inicio:</u> {{ education.fechaEdu }}</p>
+          <p class="card-text"><u>Fecha de finalización:</u>  {{ education.fechafinEdu }}</p>
+
+          <!-- Botones -->
+
+
+          <!-- boton editar -->
+          <button
+                    type="button"
+                    class="btn add me-2"
+                    data-bs-toggle="tooltip"
+                    data-bs-placement="top"
+                    title="Editar Educación"
+                    data-bs-toggle="modal"
+                    data-bs-target="#editEducationModal"
+                    (click)="onOpenModal('edit', education)"
+                  >
+                  <i class="icon fas fa-edit"></i>
+          </button>
+
+
+          <!-- boton eliminar -->
+          <button
+        type="button"
+        class="btn add me-1"
+        data-bs-toggle="tooltip"
+        data-bs-placement="top"
+        title="Eliminar Educación"
+        data-bs-target="#deleteEducationModal"
+        (click)="onDeleteEducation(education.idEdu)"
+      >
+      <i class="icon fas fa-trash-alt"></i>
+          </button>
+        </div>
+
+
+
+        <!-- Modal Editar -->
+        <div
+          class="modal fade"
+          id="editEducationModal"
+          tabindex="-1"
+          role="dialog"
+          aria-labelledby="updateEducationModalLabel"
+          aria-hidden="true"
+        >
+          <div class="modal-dialog" role="document">
+            <div class="modal-content modal-css">
+              <div class="modal-header">
+                <h5 class="modal-title" id="updateEducationModalLabel">
+                  Editar Educación
+                </h5>
+                <button
+                  type="button"
+                  class="btn-close green"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div class="modal-body">
+
+                <form #editForm="ngForm">
+                  <div class="form-group">
+                    <label for="tituloEdu">Título</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="tituloEdu"
+                      name="tituloEdu"
+                      ngModel="{{ editEducation?.tituloEdu }}"
+                      required
+                      placeholder="Título"
+                    />
+                  </div>
+
+                  <input
+                    type="hidden"
+                    ngModel="{{ editEducation?.idEdu }}"
+                    name="idEdu"
+                    class="form-control"
+                    id="idEdu"
+                    placeholder=""
+                  />
+
+              
+
+                  <div class="form-group">
+                    <label for="fechaEdu">Año de ingreso</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fechaEdu"
+                      name="fechaEdu"
+                      ngModel="{{ editEducation?.fechaEdu }}"
+                      required
+                      placeholder="Año de ingreso"
+                    />
+                  </div>
+
+                  <div class="form-group">
+                    <label for="fechafinEdu">Año de finalizacion</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="fechafinEdu"
+                      name="fechafinEdu"
+                      ngModel="{{ editEducation?.fechafinEdu }}"
+                      required
+                      placeholder="Año de finalizacion"
+                    />
+                  </div>
+
+
+
+
+                  <div class="form-group">
+                    <label for="descEdu">Descripción Educación</label>
+                    <input
+                      type="text"
+                      ngModel="{{ editEducation?.descEdu }}"
+                      name="descEdu"
+                      class="form-control"
+                      id="descEdu1"
+                      placeholder="Descripción Educación"
+                    />
+                  </div>
+
+                  
+
+
+
+                  <div class="form-group">
+                    <label for="imagenEdu">Imagen del centro educativo</label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      id="imagenEdu"
+                      name="imagenEdu"
+                      ngModel="{{ editEducation?.imagenEdu }}"
+                      required
+                      placeholder="URL imagen del centro educativo"
+                    />
+                  </div>
+
+                  <div class="modal-footer mt-3">
+                    <button
+                      type="reset"
+                      class="btn button1"
+                      data-bs-dismiss="modal"
+                    >
+                      Cancelar
+                    </button>
+
+                    <button
+                      (click)="onUpdateEducation(editForm.value)"
+                      class="btn button2"
+                      data-bs-dismiss="modal"
+                    >
+                      Guardar
+                    </button>
+                  </div>
+                  
+                </form>
+
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- fin Modal Editar -->
+      </div>
+    </div>
+  </div>

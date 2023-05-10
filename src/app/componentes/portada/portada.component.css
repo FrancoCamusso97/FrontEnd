@@ -1,0 +1,16 @@
+/* Portada hero */
+
+.img-portada{
+    align-items: center;
+    
+    
+    display: flex;
+    justify-content: center;
+    width: auto;
+    height: 420px;
+}
+
+#portada{
+    height: 400px;
+    margin-top: 5px;
+}

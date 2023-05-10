@@ -1,0 +1,17 @@
+/* Seccion Proyectos */
+
+.proyecto{
+    border-radius: 24px;
+    margin-top: 50px;
+}
+
+
+.texto-proyecto{
+    font-family: 'Itim', cursive;
+    color: #f5f6f7;
+    font-size: 30px;
+}
+
+.container{
+    margin-top: 250px;
+}
