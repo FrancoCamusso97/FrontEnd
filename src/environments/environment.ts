@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false, 
-  apiBaseUrl: 'http://localhost:8080',
+  apiBaseUrl: 'https://backend-rrgx.onrender.com',
   firebaseConfig: {
     apiKey: "AIzaSyBhqna2qjGJbQnHjqiRsGOacxIfJ9xof-k",
     authDomain: "login-6ae3e.firebaseapp.com",
